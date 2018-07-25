@@ -9,4 +9,19 @@ header {
 h1 {
     font-family: 'Gaegu', cursive;
     font-weight: bold;
+    font-size: 50px;
+    margin: 15px 0;
+}
+
+.gameBody {
+    width: 65%;
+    margin: auto;
+}
+
+#playBtn {
+    height: 100px;
+    width: 500px;
+    margin: auto;
+    display: block;
+
 }
