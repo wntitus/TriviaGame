@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background-image: url("../images/wormz.png");
+}
+
 header {
     text-align: center;
 }
@@ -15,7 +19,12 @@ h1 {
 
 .gameBody {
     width: 65%;
+    height: 500px;
     margin: auto;
+    padding: 50px;
+    background-color: #f2f2f2;
+    border: 1.5px solid black;
+    
 }
 
 #playBtn {
@@ -23,5 +32,16 @@ h1 {
     width: 500px;
     margin: auto;
     display: block;
+    background-color: #ffff80;
+    font-family: 'Gaegu', cursive;
+    font-size: 30px;
+    border-color: #1a1a00;
+}
 
+#playBtn:hover {
+    background-color: #cccc00;   
+}
+
+#playBtn:active {
+    background-color: #999900;
 }
