@@ -1,8 +1,8 @@
 $(document).ready(function(){
     var gameStart = false;
     var gameTimer = 120;
-    var gameBody = $(".gameBody");
     var timerBox = $("<div class = 'timer'>");
+    var submitBtn = $("<button type = 'button' id = 'submitBtn'>");
     var questions = {
         questionOne : {
             question : "Who is Spongebob's best friend?",
@@ -18,6 +18,11 @@ $(document).ready(function(){
             question: "How many bears are there in We Bare Bears?",
             choices: ["Four", "Six", "Three", "Ten"],
             answer : "Three"
+        },
+        questionFour : {
+            question: "What are the names of the Fairly Oddparents?",
+            choices: ["Kipper and Dipper", "Garbo and Trashy", "Cosmo and Wanda"],
+            answer : "Cosmo and Wanda"
         }
         
     } 
@@ -42,7 +47,7 @@ $(document).ready(function(){
                 qDiv.append(formElem);
                 for (j = 0; j < objChoices.length; j++) {
                     console.log(objChoices[j]);
-                    var inputElem = $("<input type = 'radio' name = 'answer' id = 'radio-choice" + j + "'><label for = 'radio-choice" + j + "'>");
+                    var inputElem = $("<input type = 'radio' name = 'answer' id = 'radio-choice_" + objChoices[j] + "'><label for = 'radio-choice_" + objChoices[j] + "'>");
                     formElem.append(inputElem);
                     inputElem.append(objChoices[j]);
                 }
@@ -65,14 +70,8 @@ $(document).ready(function(){
             setInterval(timeDown, 1000);
         } 
         fillQuestions();
-             
-        
-
-
-
-
-
-
+        $(".gameBody").append(submitBtn);
+        $(submitBtn).text("Submit your answers!");
     })
 })
 
