@@ -9,6 +9,7 @@ $(document).ready(function(){
     var submitBtn = $("<button type = 'button' id = 'submitBtn'>");
     var correct = 0;
     var incorrect = 0;
+    var resultsBox = $("<div class = 'results'>");
     var questions = {
         questionOne : {
             question : "Who is Spongebob's best friend?",
@@ -38,12 +39,29 @@ $(document).ready(function(){
     objSize = Object.keys(questions).length;
 
     // global function that will start the timer countdown
+
+    function timeOut() {
+        clearInterval();
+        (".question").detach();
+        console.log(gameTimer);
+    
+    }
     
 
     function timeDown() {
-        gameTimer -= 1;
-        $(".timer").html("<h2>" + gameTimer + "</h2>");
+        if (gameTimer > 0) {
+            gameTimer -= 1;
+            $(".timer").html("<h2>" + gameTimer + "</h2>");
+        } else if (gameTimer === 0) {
+            clearInterval();
+            $(".question").detach();
+            $("#submitBtn").detach();
+            $(timerBox).detach();
+            return;
+        }
     }
+
+
 
     // global function that will dynamically fill in any questions we might add
     // loops through our object, then loops through the choices array in each object and appends both the question and its answers
@@ -100,20 +118,23 @@ $(document).ready(function(){
         $(".gameBody").append(timerBox);
         $(".timer").html("<h2>" + gameTimer + "</h2>");
         $("#playBtn").detach();
-        if (gameTimer > 0) {
+        if (gameStart === true) {
             setInterval(timeDown, 1000);
         } 
         fillQuestions();
         $(".gameBody").append(submitBtn);
         $(submitBtn).text("Submit your answers!");
         $("#submitBtn").on("click", function() {
-           checkAnswers();
-           $(".question").detach();
-           $(timerBox).detach();
-           $("#submitBtn").detach();
-           alert(incorrect, correct);
+            clearInterval();
+            checkAnswers();
+            $(".question").detach();
+            $(timerBox).detach();
+            $("#submitBtn").detach();
+            $(".gameBody").append(resultsBox);
+            $(".results").html("You got: " + correct + " correct and " + incorrect + " incorrect!");
         })
     })
+
 })
 
 

@@ -36,6 +36,14 @@ h2 {
     
 }
 
+.results {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 25px;
+    width: auto;
+    margin: auto;
+    text-align: center;
+}
+
 form {
     margin-top: 25px;
 }
