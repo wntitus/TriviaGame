@@ -4,9 +4,11 @@ $(document).ready(function(){
     // that will be added, and an object for our questions that will be dynamically filled
     
     var gameStart = false;
-    var gameTimer = 120;
+    var gameTimer = 5;
     var timerBox = $("<div class = 'timer'>");
     var submitBtn = $("<button type = 'button' id = 'submitBtn'>");
+    var correct = 0;
+    var incorrect = 0;
     var questions = {
         questionOne : {
             question : "Who is Spongebob's best friend?",
@@ -76,6 +78,13 @@ $(document).ready(function(){
                 var objAns = obj.answer;
                 var checkCheck = $("#radio-choice_" + objAns).prop("checked");
                 console.log(checkCheck);
+                if (checkCheck === true) {
+                    correct++;
+                } else if (checkCheck === false) {
+                    incorrect++;
+                }
+                console.log(correct);
+                console.log(incorrect);
             }
         }
     }
@@ -99,6 +108,10 @@ $(document).ready(function(){
         $(submitBtn).text("Submit your answers!");
         $("#submitBtn").on("click", function() {
            checkAnswers();
+           $(".question").detach();
+           $(timerBox).detach();
+           $("#submitBtn").detach();
+           alert(incorrect, correct);
         })
     })
 })
