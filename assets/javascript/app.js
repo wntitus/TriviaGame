@@ -1,7 +1,8 @@
 $(document).ready(function(){
 
     // declaring our global variables - one for the game timer, a var for the div that will be added, a var for the submit button
-    // that will be added, and an object for our questions that will be dynamically filled
+    // that will be added, variables to hold the amount correct and incorrect, and a box to display the results, as well as
+    // an object for our questions that will be dynamically filled
     
     var gameStart = false;
     var gameTimer = 75;
@@ -60,7 +61,7 @@ $(document).ready(function(){
     objSize = Object.keys(questions).length;
 
     // global function that will start the timer countdown
-    
+    // and will remove the questions and add a certain message if time runs out before answers are submitted
 
     function timeDown() {
         if (gameTimer > 0) {
@@ -104,7 +105,8 @@ $(document).ready(function(){
         }
     }
 
-
+    // a function to loop through our object and check the answer property of each question against the selected answer,
+    // and adds one to either correct or incorrect for each question
     
     function checkAnswers() {
         for (var prop in questions) {
@@ -124,6 +126,8 @@ $(document).ready(function(){
     
     //adding functionality when we click the start button, removes the start button and starts timer function and the question 
     // fill function as well as adding the submit button at the bottom
+    // also placing functionality for the submit button itself by checking answers, detaching all content, and then displaying
+    // the player's results
 
 
     $("#playBtn").on("click", function() {
