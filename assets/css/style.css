@@ -26,13 +26,31 @@ h2 {
 
 .gameBody {
     width: 65%;
-    height: 500px;
+    height: fit-content;
     margin: auto;
     padding: 50px;
     background-color: #f2f2f2;
     border: 1.5px solid black;
     align-content: center;
+    
 }
+
+form {
+    margin-top: 25px;
+}
+
+input, label {
+    margin-right: 20px;
+}
+
+.question {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 20px;
+    margin: auto;
+    margin-top: 75px;
+    text-align: center;
+}
+
 
 #playBtn {
     height: 100px;
