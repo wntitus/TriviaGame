@@ -1,4 +1,5 @@
 # TriviaGame
+!(Image of start)[assets/images/Screen Shot 2018-07-26 at 1.27.41 PM]
 
 This is a small "Cartoon Trivia" game built using Javascript and jQuery. 
 
