@@ -4,7 +4,7 @@ $(document).ready(function(){
     // that will be added, and an object for our questions that will be dynamically filled
     
     var gameStart = false;
-    var gameTimer = 5;
+    var gameTimer = 75;
     var timerBox = $("<div class = 'timer'>");
     var submitBtn = $("<button type = 'button' id = 'submitBtn'>");
     var correct = 0;
@@ -39,13 +39,6 @@ $(document).ready(function(){
     objSize = Object.keys(questions).length;
 
     // global function that will start the timer countdown
-
-    function timeOut() {
-        clearInterval();
-        (".question").detach();
-        console.log(gameTimer);
-    
-    }
     
 
     function timeDown() {
@@ -57,6 +50,8 @@ $(document).ready(function(){
             $(".question").detach();
             $("#submitBtn").detach();
             $(timerBox).detach();
+            $(".gameBody").append(resultsBox);
+            $(".results").html("You ran out of time! You got: " + correct + " correct and " + incorrect + " incorrect! Refresh to try again.");
             return;
         }
     }
@@ -131,7 +126,7 @@ $(document).ready(function(){
             $(timerBox).detach();
             $("#submitBtn").detach();
             $(".gameBody").append(resultsBox);
-            $(".results").html("You got: " + correct + " correct and " + incorrect + " incorrect!");
+            $(".results").html("You got: " + correct + " correct and " + incorrect + " incorrect! Refresh to play again.");
         })
     })
 
