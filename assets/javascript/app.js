@@ -27,10 +27,31 @@ $(document).ready(function(){
             answer : "Three"
         },
         questionFour : {
-            question: "Which one of these is NOT a name of a Fairly Oddparent?",
-            choices: ["Kipper", "Cosmo", "Wanda"],
+            question: "Which one of these is NOT a name of a Fairly Oddparent or their son?",
+            choices: ["Kipper", "Cosmo", "Wanda", "Poof"],
             answer : "Kipper"
-        }
+        },
+        questionFive : {
+            question: "What was originally going to be Mickey Mouse's name?",
+            choices: ["Marvin", "Mouseman", "Moogle", "Mortimer"],
+            answer : "Mortimer"
+        },
+        questionSix: {
+            question : "When Spongebob had a seahorse, what did he name it?",
+            choices : ["Weesnaw", "Mystery", "Gary", "Jelly"],
+            answer : "Mystery"
+        },
+        questionSeven: {
+            question: "True or false: Disney reacquired the rights to Oswald the Lucky Rabbit by trading a sportscaster to NBC for them.",
+            choices: ["True", "False"],
+            answer: "True"
+        },
+        questionEight: {
+            question: "What does Ariel from The Little Mermaid use to brush her hair?",
+            choices: ["Brush", "Shell", "Bones", "Fork"],
+            answer: "Fork"
+        },
+        
         
     } 
 
@@ -46,6 +67,7 @@ $(document).ready(function(){
             gameTimer -= 1;
             $(".timer").html("<h2>" + gameTimer + "</h2>");
         } else if (gameTimer === 0) {
+            checkAnswers();
             clearInterval();
             $(".question").detach();
             $("#submitBtn").detach();
@@ -90,14 +112,11 @@ $(document).ready(function(){
                 var obj = questions[prop];
                 var objAns = obj.answer;
                 var checkCheck = $("#radio-choice_" + objAns).prop("checked");
-                console.log(checkCheck);
                 if (checkCheck === true) {
                     correct++;
                 } else if (checkCheck === false) {
                     incorrect++;
                 }
-                console.log(correct);
-                console.log(incorrect);
             }
         }
     }

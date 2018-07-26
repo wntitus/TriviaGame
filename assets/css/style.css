@@ -36,6 +36,10 @@ h2 {
     
 }
 
+.timer {
+    position: fixed;
+}
+
 .results {
     font-family: 'Gloria Hallelujah', cursive;
     font-size: 25px;
@@ -71,6 +75,7 @@ input, label {
     font-family: 'Gaegu', cursive;
     font-size: 30px;
     border-color: #1a1a00;
+    cursor: pointer;
 }
 
 #submitBtn {
