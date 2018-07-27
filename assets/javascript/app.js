@@ -8,6 +8,7 @@ $(document).ready(function(){
     var gameTimer = 75;
     var timerBox = $("<div class = 'timer'>");
     var submitBtn = $("<button type = 'button' id = 'submitBtn'>");
+    var resetBtn = $("<button type = 'button' id = 'resetBtn'>");
     var correct = 0;
     var incorrect = 0;
     var resultsBox = $("<div class = 'results'>");
@@ -84,7 +85,7 @@ $(document).ready(function(){
             $("#submitBtn").detach();
             $(timerBox).detach();
             $(".gameBody").append(resultsBox);
-            $(".results").html("You ran out of time! You got: " + correct + " correct and " + incorrect + " incorrect! Refresh to try again.");
+            $(".results").html("You ran out of time! You got: " + correct + " correct and " + incorrect + " incorrect!");
             return;
         }
     }
@@ -132,6 +133,30 @@ $(document).ready(function(){
             }
         }
     }
+
+    //function to populate our game itself for when the start or reset buttons are clicked
+
+    function gameFill() {
+        if (gameStart === true) {
+            clearInterval(timerInt);
+            var timerInt = setInterval(timeDown, 1000);
+        } 
+        fillQuestions();
+        $(".gameBody").append(submitBtn);
+        $(submitBtn).text("Submit your answers!");
+        $("#submitBtn").on("click", function() {
+            clearInterval(timerInt);
+            checkAnswers();
+            $(".question").detach();
+            $(timerBox).detach();
+            $("#submitBtn").detach();
+            $(".gameBody").append(resultsBox);
+            $(".results").html("You got: " + correct + " correct and " + incorrect + " incorrect!");
+            $(resultsBox).append(resetBtn);
+            $(resetBtn).text("Restart!");
+            gameStart = false;
+    })
+    }
     
     
     //adding functionality when we click the start button, removes the start button and starts timer function and the question 
@@ -146,26 +171,25 @@ $(document).ready(function(){
         $(".gameBody").append(timerBox);
         $(".timer").html("<h2>" + gameTimer + "</h2>");
         $("#playBtn").detach();
-        if (gameStart === true) {
-            setInterval(timeDown, 1000);
-        } 
-        fillQuestions();
-        $(".gameBody").append(submitBtn);
-        $(submitBtn).text("Submit your answers!");
-        $("#submitBtn").on("click", function() {
-            clearInterval();
-            checkAnswers();
-            $(".question").detach();
-            $(timerBox).detach();
-            $("#submitBtn").detach();
-            $(".gameBody").append(resultsBox);
-            $(".results").html("You got: " + correct + " correct and " + incorrect + " incorrect! Refresh to play again.");
-        })
+        gameFill();
     })
 
+    //functionality for when the dynamic reset button is clicked - using document.on because the button is dynamically added
+    //with jquery
+
+    $(document).on("click", "#resetBtn", function() {
+        $(resultsBox).detach();
+        $(resetBtn).detach();
+        gameStart = true;
+        gameTimer = 75;
+        correct = 0;
+        incorrect = 0;
+        $(".gameBody").append(timerBox);
+        $(".timer").html("<h2>" + gameTimer + "</h2>");
+        gameFill();
 })
 
-
+})
 
 
 

@@ -65,7 +65,7 @@ input, label {
 }
 
 
-#playBtn, #submitBtn {
+#playBtn, #submitBtn, #resetBtn {
     height: 100px;
     width: 500px;
     margin: auto;
@@ -78,15 +78,15 @@ input, label {
     cursor: pointer;
 }
 
-#submitBtn {
+#submitBtn, #resetBtn {
     margin-top: 75px;
 }
 
 
-#playBtn:hover, #submitBtn:hover {
+#playBtn:hover, #submitBtn:hover, #resetBtn:hover {
     background-color: #cccc00;   
 }
 
-#playBtn:active, #submitBtn:active {
+#playBtn:active, #submitBtn:active, #resetBtn:active {
     background-color: #999900;
 }
