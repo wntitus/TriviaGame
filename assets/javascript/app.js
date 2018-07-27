@@ -52,6 +52,16 @@ $(document).ready(function(){
             choices: ["Brush", "Shell", "Bones", "Fork"],
             answer: "Fork"
         },
+        questionNine: {
+            question: "What series features a feline and canine who are joined in the middle?",
+            choices: ["FelineCanine", "CatDog", "Cronenberged", "WoofMan"],
+            answer: "CatDog"
+        },
+        questionTen: {
+            question: "Fill in the blank: 'I'm Dirty ___! No, I\'M Dirty ___!'",
+            choices: ["Boy", "Dude", "Bob", "Dan"],
+            answer: "Dan"
+        }
         
         
     } 
